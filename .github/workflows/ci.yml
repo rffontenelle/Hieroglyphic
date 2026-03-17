@@ -10,7 +10,7 @@ jobs:
     name: Rustfmt
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: dtolnay/rust-toolchain@v1
         with:
           toolchain: stable
@@ -24,7 +24,7 @@ jobs:
     name: Lint Flatpak Manifest
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: |
           docker run -v $(pwd):/mnt --rm -t ghcr.io/flathub/flatpak-builder-lint:latest manifest /mnt/build-aux/io.github.finefindus.Hieroglyphic.json
 
@@ -35,7 +35,7 @@ jobs:
       image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
       options: --privileged
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Add Flathub Beta remote
         run: |
           flatpak --user remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
@@ -52,9 +52,9 @@ jobs:
     name: Spell Checker
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.x'
       - name: Install Python Dependencies
